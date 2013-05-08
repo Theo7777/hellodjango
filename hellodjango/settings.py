@@ -72,8 +72,6 @@ MEDIA_URL = ''
 # Example: "/var/www/example.com/static/"
 STATIC_ROOT = ''
 
-ADMIN_MEDIA_PREFIX = '/static/admin/'
-
 import os.path
 
 # URL prefix for static files.
