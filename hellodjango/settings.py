@@ -72,13 +72,16 @@ MEDIA_URL = ''
 # Example: "/var/www/example.com/static/"
 STATIC_ROOT = ''
 
+ADMIN_MEDIA_PREFIX = '/static/admin/'
+
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-   "/Users/Theo/hellodjango/writer/static/",
+      os.path.join(PROJECT_PATH, 'writer/static'),
+)
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
