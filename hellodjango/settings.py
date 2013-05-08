@@ -1,4 +1,8 @@
 # Django settings for myproject project.
+import os.path
+
+
+PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 DEBUG = True
 DEFAULT_FROM_EMAIL = 'theo.ohene@gmail.com'
@@ -70,15 +74,16 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(PROJECT_PATH, 'staticfiles')
 
-import os.path
+
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
-PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
+ADMIN_MEDIA_PREFIX = "/static/admin/"
+
 
 #Additional locations of static files
 STATICFILES_DIRS = (
