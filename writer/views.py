@@ -11,10 +11,10 @@ def EmailInput(request):
 			email = form['email']
 			new_email = UserEmail(email = email)
 			new_email.save()
-			return render(request, 'success.html', {'email':email})
+			return render(request, 'success_new.html', {'email':email})
 		else:
-			return render(request, 'index.html')
+			return render(request, 'index_new.html')
 	form = EmailForm()
-	return render (request, 'index.html', {'form':form})
+	return render (request, 'index_new.html', {'form':form})
 
 
