@@ -75,15 +75,16 @@ USE_TZ = True
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
 
+
+AWS_STORAGE_BUCKET_NAME = 'theoohene'
+#AWS_PRELOAD_METADATA = True # necessary to fix manage.py collectstatic command to only upload changed files instead of all files
 AWS_ACCESS_KEY_ID = 'AKIAJ4DUFG5UHHDENCFA'
 AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'theoohene'
-AWS_PRELOAD_METADATA = True # necessary to fix manage.py collectstatic command to only upload changed files instead of all files
 
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+STATIC_URL = 'http://theoohene.s3.amazonaws.com/static/'
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 # if DEBUG:
