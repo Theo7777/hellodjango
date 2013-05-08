@@ -81,24 +81,15 @@ AWS_STORAGE_BUCKET_NAME = 'theoohene'
 AWS_ACCESS_KEY_ID = 'AKIAJ4DUFG5UHHDENCFA'
 AWS_SECRET_ACCESS_KEY = '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'
 
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-STATIC_URL = 'http://theoohene.s3.amazonaws.com/static/'
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+if DEBUG:
+    # Development storage using local files.
+    STATIC_URL = '/static/'
+    ADMIN_MEDIA_PREFIX = '/static/admin/'
 
-# if DEBUG:
-#     # Development storage using local files.
-#     STATIC_URL = '/static/'
-#     ADMIN_MEDIA_PREFIX = '/static/admin/'
-
-# if not DEBUG:
-#     # Production storage using s3.
-#     # DEFAULT_FILE_STORAGE = 's3storages.MediaStorage'
-#     STATICFILES_STORAGE = 's3storages.StaticStorage'
-#     STATIC_URL = 'https://s3.amazonaws.com/theohene/static'
-#     #ADMIN_MEDIA_PREFIX = 'https://s3.amazonaws.com/theoohene/static/admin/'
-#     #MEDIA_URL = 'https://s3.amazonaws.com/yourbucket/static/'
+if not DEBUG:
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    STATIC_URL = 'http://theoohene.s3.amazonaws.com/static/'
 
 STATICFILES_DIRS = (
       os.path.join(PROJECT_PATH, 'writer/static'),
