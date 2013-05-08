@@ -78,18 +78,19 @@ import os.path
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
-Additional locations of static files
+PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
+
+#Additional locations of static files
 STATICFILES_DIRS = (
       os.path.join(PROJECT_PATH, 'writer/static'),
 )
 # 
 # STATICFILES_DIRS = (
-   "/Users/Theo/hellodjango/writer/static"
+#"/Users/Theo/hellodjango/writer/static"
 #     )
 # Put strings here, like "/home/html/static" or "C:/www/django/static".
 # Always use forward slashes, even on Windows.
 # Don't forget to use absolute paths, not relative paths.
-
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
@@ -114,7 +115,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    Uncomment the next line for simple clickjacking protection:
+    #Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
