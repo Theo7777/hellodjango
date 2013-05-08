@@ -63,32 +63,61 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = ''
+# MEDIA_ROOT = ''
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = ''
+# MEDIA_URL = ''
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
+
+AWS_ACCESS_KEY_ID = 'AKIAJ4DUFG5UHHDENCFA'
+AWS_SECRET_ACCESS_KEY = '4A4JaeQ4mopOG8nruPzbxEgiBYUaZmo8m2F0VnaM'
+AWS_STORAGE_BUCKET_NAME = 'theoohene'
+AWS_PRELOAD_METADATA = True # necessary to fix manage.py collectstatic command to only upload changed files instead of all files
+
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
+# if DEBUG:
+#     # Development storage using local files.
+#     STATIC_URL = '/static/'
+#     ADMIN_MEDIA_PREFIX = '/static/admin/'
+
+# if not DEBUG:
+#     # Production storage using s3.
+#     # DEFAULT_FILE_STORAGE = 's3storages.MediaStorage'
+#     STATICFILES_STORAGE = 's3storages.StaticStorage'
+#     STATIC_URL = 'https://s3.amazonaws.com/theohene/static'
+#     #ADMIN_MEDIA_PREFIX = 'https://s3.amazonaws.com/theoohene/static/admin/'
+#     #MEDIA_URL = 'https://s3.amazonaws.com/yourbucket/static/'
+
+STATICFILES_DIRS = (
+      os.path.join(PROJECT_PATH, 'writer/static'),
+)
+
+#ADMIN_MEDIA_PREFIX = 'https://theoohene.s3.amazonaws.com/static/admin/'
+
 STATIC_ROOT = os.path.join(PROJECT_PATH, 'staticfiles')
 
 
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
-ADMIN_MEDIA_PREFIX = "/static/admin/"
+# ADMIN_MEDIA_PREFIX = "/static/admin/"
 
 
 #Additional locations of static files
-STATICFILES_DIRS = (
-      os.path.join(PROJECT_PATH, 'writer/static'),
-)
+
 # 
 # STATICFILES_DIRS = (
 #"/Users/Theo/hellodjango/writer/static"
@@ -157,6 +186,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     #'django.contrib.admindocs',
     'writer', 
+    'storages',
 
    
 )
