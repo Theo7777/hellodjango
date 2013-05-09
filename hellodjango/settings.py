@@ -1,7 +1,6 @@
 # Django settings for myproject project.
 import os.path
 
-
 PROJECT_PATH =  os.path.dirname(os.path.abspath(__file__))
 
 DEBUG = True

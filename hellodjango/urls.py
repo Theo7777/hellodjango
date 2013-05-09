@@ -7,7 +7,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	url(r'^home', 'writer.views.EmailInput'),
+	url(r'^/', 'writer.views.EmailInput'),
 
     # Examples:
     # url(r'^$', 'hellodjango.views.home', name='home'),
