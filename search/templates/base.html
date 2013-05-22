@@ -1,0 +1,65 @@
+
+<html>
+    <head>
+        <title>{% block head_title %}Welcome to my blog{% endblock %}</title>
+        <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Lato:300:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })(); </script>
+        <style>
+        body{
+        font-family:'Lato', sans-serif;
+        }
+        .container{
+        	   font-family:'Lato', sans-serif;
+
+        }
+        </style>
+
+
+<link rel='stylesheet' href='{{STATIC_URL}}/bootstrap/css/bootstrap.css'>
+<link rel='stylesheet' href='{{STATIC_URL}}/searchFlatui.css'>
+<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+
+
+        <style>{% block style %}{% endblock %}</style>
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+    	{% block container %}
+        <h1>{% block title %}</h1> {% endblock %}
+        	{% block content %}
+
+
+        	{% endblock %}
+        {% endblock %}
+
+        {% block footer %}
+        {% endblock %}
+    </body>
+
+<script  src='http://code.jquery.com/jquery-1.9.1.js'></script>
+<script  src="{{STATIC_URL}}/flatui-js/application.js"></script>
+<script  src="{{STATIC_URL}}/flatui-js/tooltip.js"></script>
+<script  src="{{STATIC_URL}}/flatui-js/custom_checkbox.js"></script>
+<script  src="{{STATIC_URL}}/flatui-js/custom_radio.js"></script>
+<script  src="{{STATIC_URL}}/bootstrap/js/bootstrap.js"></script>
+<script  src="{{STATIC_URL}}/custom.min.js"></script>
+<!--<script  src="dropkick.js"></script>-->
+<script  src="{{STATIC_URL}}/jquery.placeholder.js"></script>
+<script  src="{{STATIC_URL}}/tagsinput.js"></script>
+<script  src="{{STATIC_URL}}/ie.js"></script>
+
+
+    
+</html>

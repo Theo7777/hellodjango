@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+   {% autoescape off %} 
+ <h2> {{ details.fullName}}</h2>
+ 	<ul><h3>Links</h3>
+ 		<li>Web: {{details.links.web }}</li>
+ 		<li>Mobile: {{details.links.mobile }}</li>
+ 	</ul>
+
+ 	<ul><h3>Tweets about {{details.firstName}}</h3>
+
+ 	
+	 		{% for tweet in results %}
+	 			<li>{{ tweet.text }}</li>
+	 		{% endfor %}
+ 	</ul>
+
+
+{% endautoescape %} 
+
+{% endblock %}
+
+
+
+
+
+
