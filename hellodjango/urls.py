@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, include, url
 from writer.views import EmailInput
 from django.conf import settings
+from search.views import search_form, search
+
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -8,6 +10,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 	url(r'^/', 'writer.views.EmailInput'),
+    url(r'^search-form/$', 'search.views.search_form'),
+    (r'^search/$', 'search.views.search'),
 
     # Examples:
     # url(r'^$', 'hellodjango.views.home', name='home'),

@@ -1,44 +1,104 @@
 {% extends 'base.html' %}
 
 {% block style %}
-
-.big-search{
-padding-top:40px;
-padding-bottom:200px;
+.body{
+  width:100%;
+  height:100%;
 }
-{% endblock %}
-{% block content %}
+.big-search{
+padding-top:20px;
+padding-bottom:200px;
+font-size:28px;
+}
+.main-section{
+  width:100%;
+  height:80%; 
+  background-color:#3498DB;
+  margin-left:0;
+  color:#ECF0F1;
+  border-bottom:2px solid #BDC3C7;
+}
+.main-section h1{
+  padding-top:5%;
+  font-size:48px;
+  color:#ECF0F1;
+}
+.main-section h1 small{
+  color:#ECF0F1;
+}
+.second-section{
+  padding-top:1.5%;
+  height:100%;
+}
+.btn.btn-info {
+  text-align:center;
+  margin-left:37.5%;
+  width:250px;
+  <!-- background-color:#ECF0F1; -->
+  color:#3498db;
+  border:20px solid #3498db;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
   
+}
 
-<div class="heading">
+
+
+#search-box{
+background: url("{{STATIC_URL}}search-icon.jpg") no-repeat right center;
+background-color:#ECF0F1;
+}
+.second-section h2{
+  font-size:70px;
+text-align:center;
+font-weight:300
+}
+.carousel{
+  <!-- display:none; -->
+} 
+
+{% endblock %}
+
+
+
+
+  {% block content %}
+
+<div class='main-section'>
+  <div class="heading">
       <div class="demo-headline">
         <h1 class="demo-logo">
-          <div class="logo"></div>
-          The Round World
-          <small>Your Football Index</small>
+          THE ROUND WORLD
+          <small>YOUR FOOTBALL INDEX</small>
         </h1>
       </div> <!-- /demo-headline -->
  </div> 
+
 <div class='container'>
-
-
 		<div class='big-search'>
-			<h3 id='search-heading'> Search Footballers </h3>
+<!-- 			<h3 id='search-heading'> Search Footballers </h3> -->
 				<h4> Start Typing... </h4>
-
-			<br>
 		  <form action="/search/" method="get">
-		        <input type="text" name="q">
+		        <input type="text" name="q" id='search-box'>
+             <label class="search-icon" for="search-box"></label>
+             <button type="submit" class="btn btn-large btn-block btn-info" data-loading-text="Loading...">Search Footballers</button>
 		        <!-- <input class='btn btn-large btn-block' type="submit" value="Search"> -->
 		    </form>
 		</div>
-</div><!-- End container -->
+  </div>
+</div>
+
+  <div class='second-section'>
+  <!--   <h2> The Beautiful Game</h2> -->
+
+
+  </div><!-- End second section -->
 
 
 {% endblock %}
-  {% block footer %}
-
-      <footer>
+ 
+    <!--   <footer>
       <div class="container">
         <div class="row">
           <div class="span7">
@@ -47,7 +107,7 @@ padding-bottom:200px;
             <p> Have a look around and you'll find details about all the footballers
             </p>
               
-          </div> <!-- /span8 -->
+          </div> 
 
           <div class="span5">
             <div class="footer-banner">
@@ -59,8 +119,9 @@ padding-bottom:200px;
         </div>
       </div>
     </footer>
+ -->
 
-  {% endblock %}
+
 
 
   

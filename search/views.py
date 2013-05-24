@@ -58,8 +58,6 @@ def search(request):
 		return render(request, 'success1.html', {'details':details, 'results':results})
 
 
-		
-
 
 				
 

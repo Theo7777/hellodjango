@@ -81,22 +81,23 @@ AWS_ACCESS_KEY_ID = 'AKIAJ4DUFG5UHHDENCFA'
 AWS_SECRET_ACCESS_KEY = '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'
 
 
-# if DEBUG:
-#     # Development storage using local files.
-#     STATIC_URL = '/static/'
-#     ADMIN_MEDIA_PREFIX = '/static/admin/'
+if DEBUG:
+    # Development storage using local files.
+    STATIC_URL = '/static/'
+    ADMIN_MEDIA_PREFIX = '/static/admin/'
 
-# if not DEBUG:
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-STATIC_URL = 'http://theoohene.s3.amazonaws.com/static/'
+if not DEBUG:
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    STATIC_URL = 'http://theoohene.s3.amazonaws.com/static/'
 
 STATICFILES_DIRS = (
-      os.path.join(PROJECT_PATH, 'writer/static'),
+      #os.path.join(PROJECT_PATH, 'writer/static'),
+      os.path.join(PROJECT_PATH, 'search/static'),
 )
 
 #ADMIN_MEDIA_PREFIX = 'https://theoohene.s3.amazonaws.com/static/admin/'
 
-STATIC_ROOT = os.path.join(PROJECT_PATH, 'staticfiles')
+STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 
 
 
@@ -177,7 +178,8 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     #'django.contrib.admindocs',
     'writer', 
-    'storages',
+    #'storages',
+    'search',
 
    
 )
