@@ -2,8 +2,9 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import json
 import requests
-import pprint
 import tweepy
+from bs4 import BeautifulSoup
+import lxml
 
 
 #Espn API Information
@@ -47,7 +48,17 @@ def search(request):
 			for names in players:
 				if name in players[n]['fullName']:
 					#print 'My name is ' + name + '. See my details below'
-					details = players[n]
+					details = players[n]					
+					link = details['links']['web']['athletes']['href']
+					profile_response = requests.get(link)
+					profile_data = profile_response.content
+					soup = BeautifulSoup(profile_data, 'lxml')
+					profile = soup.find('ul', {'class':'profile-items'}).findAll('li')
+					profile_items =[]
+					for items in profile:
+					 	profile_items.append(items.string)
+					profile_pic = soup.find('div', {'class':'player-photo'}).find('img')
+					image = profile_pic.get('src')
 					n += 1
 					#return HttpResponse('ok')
 				else:
@@ -55,7 +66,7 @@ def search(request):
 
 #twitter search
 		results = api.search(name)
-		return render(request, 'success1.html', {'details':details, 'results':results})
+		return render(request, 'success1.html', {'details':details, 'results':results, 'profile':profile_items, 'image':image})
 
 
 

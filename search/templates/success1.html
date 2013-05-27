@@ -1,26 +1,58 @@
 {% extends 'base.html' %}
 
+{% block style %}
+.profile{
+	float:left;
+	border:1px solid #BDC3C7;
+	margin:15px;
+}
+.profile-items{
+padding:10px;
+}
 
 
-{% block content %}
-
-   {% autoescape off %} 
- <h2> {{ details.fullName}}</h2>
- 	<ul><h3>Links</h3>
- 		<li>Web: {{details.links.web }}</li>
- 		<li>Mobile: {{details.links.mobile }}</li>
- 	</ul>
-
- 	<ul><h3>Tweets about {{details.firstName}}</h3>
-
- 	
-	 		{% for tweet in results %}
-	 			<li>{{ tweet.text }}</li>
-	 		{% endfor %}
- 	</ul>
+{% endblock %}
 
 
-{% endautoescape %} 
+	{% block content %}
+	<div class='container'>
+
+		   {% autoescape off %} 
+		 <h2> {{ details.fullName}}</h2>
+		 	<ul><h3>Links</h3>
+		 		<li><a href = '{{details.links.web.athletes.href }}'> {{details.firstName}}'s Web Profile</a></li>
+		 		<li><a href = '{{details.links.mobile.athletes.href }}'> {{details.firstName}}'s Mobile Profile</a></li>
+		 	</ul>
+
+		 	<div class='profile'>
+		 		<span class='picture'>
+		 			<img src='{{image}}' border='0' width='130' height='180' alt='{{details.fullName}}'>
+		 	</div>
+		<div class='profile-items'>	
+		 		<p>{{profile.0}}</p>
+		 		<p>{{profile.1}}</p>
+		 		<p>{{profile.2}}</p>
+		 		<p>{{profile.3}}</p>
+		 		<p>{{profile.4}}</p>
+		 		<p>{{profile.5}}</p>
+		 		<p>{{profile.6}}</p>
+		 		<p>{{profile.7}}</p>
+		 </div>
+
+		 <div class='tweets'>
+		 	<br>
+		 	<ul><h3>Tweets about {{details.firstName}}</h3>
+
+		 	
+			 		{% for tweet in results %}
+			 			<li>{{ tweet.text }}</li>
+			 		{% endfor %}
+		 	</ul>
+		 </div>
+</div> <!-- End container -->
+
+	{% endautoescape %} 
+
 
 {% endblock %}
 

@@ -53,11 +53,16 @@
 <script  src="{{STATIC_URL}}/flatui-js/custom_radio.js"></script>
 <script  src="{{STATIC_URL}}/bootstrap/js/bootstrap.js"></script>
 <script  src="{{STATIC_URL}}/custom.min.js"></script>
-<!--<script  src="dropkick.js"></script>-->
+<script  src="{{STATIC_URL}}dropkick.js"></script>
 <script  src="{{STATIC_URL}}/jquery.placeholder.js"></script>
 <script  src="{{STATIC_URL}}/tagsinput.js"></script>
 <script  src="{{STATIC_URL}}/ie.js"></script>
 
+<script>
+{% block script %}
+
+{% endblock %}
+</script>
 
     
 </html>
