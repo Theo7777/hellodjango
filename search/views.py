@@ -5,6 +5,7 @@ import requests
 import tweepy
 from bs4 import BeautifulSoup
 import lxml
+import re
 
 
 #Espn API Information
@@ -21,9 +22,12 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
+#skysports Newspaper Information
+sky_sports_url ='http://www1.skysports.com/transfer-centre/papertalk'
+
 
 def search_form(request):
-    return render(request, 'search_form.html')
+    return render(request, 'new-search.html')
 
 
 # def search(request):
@@ -36,8 +40,8 @@ def search_form(request):
 
 def search(request):
 	if 'q' in request.GET:
-		name = request.GET['q']
-		name = name.title()
+		n = request.GET['q']
+		name = n.title()
 		offset = -50
 		for num in range(13):
 			offset += 50
@@ -46,8 +50,8 @@ def search(request):
 			players = data["sports"][0]["leagues"][0]["athletes"]
 			n = -1
 			for names in players:
-				if name in players[n]['fullName']:
-					#print 'My name is ' + name + '. See my details below'
+				player_name = players[n]['fullName']
+				if name in player_name:
 					details = players[n]					
 					link = details['links']['web']['athletes']['href']
 					profile_response = requests.get(link)
@@ -66,22 +70,22 @@ def search(request):
 
 #twitter search
 		results = api.search(name)
-		return render(request, 'success1.html', {'details':details, 'results':results, 'profile':profile_items, 'image':image})
+		return render(request, 'success1.html', {'details':details, 'results':results, 'profile':profile_items, 'image':image })
 
+					# gossip_response = requests.get(sky_sports_url)
+					# gossip_data = gossip_response.content
+					# gossip_soup = BeautifulSoup(gossip_data, 'lxml')
 
+					#if gossip_soup.find(text=re.compile(player_name)):
+					# 	gossip_text = gossip_soup.find(text=re.compile(player_name))
+					# 	gp = gossip_text.findPrevious('img').get('alt')
+					# 	gossip_newspaper = gp.title()
+					# else:			
+					# 	no_gossip = []
+					# 	no_gossip.append('no')
+					# 	n += 1
+					# 	results = api.search(name)
+					# 	return render(request, 'success1.html', {'details':details, 'results':results, 'profile':profile_items, 'image':image, 'no_gossip':no_gossip})
 
-				
-
- # def search():
- # 	name = raw_input()
- # 	name = name.title
- # 	return look(name)
-
-
-	# if request.method == 'POST':
-	# 	if name == POST['name']:
-	# 		name = POST['name']
-	# 		name = name.title()
-	# 		return look(name)
-	# (url + '&apikey=' + api_key)
+# (url + '&apikey=' + api_key)
 

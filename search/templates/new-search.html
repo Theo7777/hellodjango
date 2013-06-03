@@ -10,14 +10,7 @@ padding-top:20px;
 padding-bottom:200px;
 font-size:28px;
 }
-.main-section{
-  width:100%;
-  height:80%; 
-  background-color:#3498DB;
-  margin-left:0;
-  color:#ECF0F1;
-  border-bottom:2px solid #BDC3C7;
-}
+
 .main-section h1{
   padding-top:5%;
   font-size:48px;
@@ -42,12 +35,30 @@ font-size:28px;
   -webkit-box-sizing:border-box;
   
 }
+#search-main{
+  margin-left: auto;
+margin-right: auto;
+float: none;
+}
+.big-search h4{
+margin-left: 110px;
+  
+}
 
+    .main-section{
+  width:100%;
+  height:80%; 
+  background-color:#3498DB;
+  margin-left:0;
+  color:#ECF0F1;
+  border-bottom:2px solid #BDC3C7;
+} 
 
 
 #search-box{
 background: url("{{STATIC_URL}}search-icon.jpg") no-repeat right center;
-background-color:#ECF0F1;
+background-color:#f7f7f6;
+height: 120px;
 }
 .second-section h2{
   font-size:70px;
@@ -58,36 +69,53 @@ font-weight:300
   <!-- display:none; -->
 } 
 
+.btn.btn-info {
+text-align: center;
+margin-left: 37.5%;
+margin-top: 20px;
+width: 250px;
+border: 2px solid #3498db;
+box-sizing: border-box;
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+}
+
 {% endblock %}
 
 
 
 
   {% block content %}
+  <div class='container-fluid'>
+<div class='row-fluid'>
+         <div class='main-section'>
+      <div class="heading">
+          <div class="demo-headline">
+            <h1 class="demo-logo">
+              THE ROUND WORLD
+              <small>YOUR FOOTBALL INDEX</small>
+            </h1>
+          </div> <!-- /demo-headline -->
+     </div> <!-- heading -->
+     <!-- end row-->
 
-<div class='main-section'>
-  <div class="heading">
-      <div class="demo-headline">
-        <h1 class="demo-logo">
-          THE ROUND WORLD
-          <small>YOUR FOOTBALL INDEX</small>
-        </h1>
-      </div> <!-- /demo-headline -->
- </div> 
-
-<div class='container-fluid'>
-		<div class='big-search'>
+    <div class='row-fluid'>
+        		<div class='big-search'>
+      
+ 
 <!-- 			<h3 id='search-heading'> Search Footballers </h3> -->
 				<h4> Start Typing... </h4>
-		  <form action="/search/" method="get">
-		        <input type="text" name="q" id='search-box'>
-             <label class="search-icon" for="search-box"></label>
-             <button type="submit" type='button' id ='button' class="btn btn-large btn-block btn-info" data-loading-text="Loading...">Search Footballers</button>
-		        <!-- <input class='btn btn-large btn-block' type="submit" value="Search"> -->
-		    </form>
-		</div>
-  </div>
-</div>
+            <div class='span10' id='search-main'>
+      		  <form action="/search/" method="get">
+      		        <input type="text" name="q" id='search-box' placeholder='e.g. Steven Gerrard'>
+                   <label class="search-icon" for="search-box"></label>
+                   <button type="submit" type='button' id ='button' class="btn btn-large btn-block btn-info" data-loading-text="Loading...">Search Footballers</button>
+      		        <!-- <input class='btn btn-large btn-block' type="submit" value="Search"> -->
+      		    </form>
+            </div><!-- end search main -->
+      		</div><!-- end big search -->
+  </div> <!-- end row fluid-->
+</div><!-- main section-->
 
   <div class='second-section'>
   <!--   <h2> The Beautiful Game</h2> -->
@@ -95,6 +123,7 @@ font-weight:300
 
   </div><!-- End second section -->
 
+</div> <!-- end container-fluid -->
 
 {% endblock %}
  
@@ -132,6 +161,3 @@ font-weight:300
 
 {% endblock %}
 
-
-
-  

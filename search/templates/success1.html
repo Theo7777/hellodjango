@@ -10,24 +10,74 @@
 padding:10px;
 }
 
+.tweets ul.container {
+  width: 30em;
+  padding: 0;
+  margin: 50px auto 0;
+  border: 10px solid #fff;
+  box-shadow: 0px 2px 3px #e3e3e3e;
+
+}
+
+ul.container-one li {
+  background: #f7f7f7;
+  color: #000;
+  list-style-type: none;
+  padding: 1.5em;
+  margin: 0;
+  transition: background-color 0.5s;
+  cursor:pointer;
+}
+ul.container-one li img{
+  margin-right:10px;
+  margin-top:10px;
+}
+
+ul.container-one li:nth-child(2) {
+  color: #fff;
+  background: #e3e3e3;
+}
+
+ul.container-one  li p{
+  border: 1px solid #000;
+  padding:10px;
+  display:none;
+}
+.profile{
+	margin-left:40%;
+}
+.img-circle{
+	background:#555;
+  width: 130px;
+  height: 180px;
+
+}
+.main-profile{
+	background:#3498DB;
+	height:450px;
+}
+
 
 {% endblock %}
 
 
 	{% block content %}
-	<div class='container'>
+	<div class='container-fluid'>
 
 		   {% autoescape off %} 
+		<div class='row-fluid'>
+	<div class='main-profile'>
+
 		 <h2> {{ details.fullName}}</h2>
-		 	<ul><h3>Links</h3>
-		 		<li><a href = '{{details.links.web.athletes.href }}'> {{details.firstName}}'s Web Profile</a></li>
-		 		<li><a href = '{{details.links.mobile.athletes.href }}'> {{details.firstName}}'s Mobile Profile</a></li>
-		 	</ul>
+		
 
 		 	<div class='profile'>
 		 		<span class='picture'>
-		 			<img src='{{image}}' border='0' width='130' height='180' alt='{{details.fullName}}'>
-		 	</div>
+		 			<img class="img-circle" src='{{image}}' alt='{{details.fullName}}'>
+		 		</span>
+		 	</div><!-- end profile -->
+	<!-- end main-profile -->
+		</div><!-- end row-->
 		<div class='profile-items'>	
 		 		<p>{{profile.0}}</p>
 		 		<p>{{profile.1}}</p>
@@ -38,17 +88,39 @@ padding:10px;
 		 		<p>{{profile.6}}</p>
 		 		<p>{{profile.7}}</p>
 		 </div>
+		 <br>
 
-		 <div class='tweets'>
-		 	<br>
-		 	<ul><h3>Tweets about {{details.firstName}}</h3>
+		 <ul><h3>Links</h3>
+		 		<li><a href = '{{details.links.web.athletes.href }}'> {{details.firstName}}'s Web Profile</a></li>
+		 		<li><a href = '{{details.links.mobile.athletes.href }}'> {{details.firstName}}'s Mobile Profile</a></li>
+		 	</ul>
+
+<!-- 		 <div class='gossip'>
+		 	{% if "no_gossip =='no'" %}
+		 	<p> No Gossip </p>
+
+		 	
+
+		 </div>
+		 	{% elif gossip %}
+		 	<h3>Newspaper Gossip </h3>
+		 	<h4>{{newspaper}} </h4>
+		 	<p> {{gossip}}</p>
+
+
+		 	{% endif %} -->
+		<div class='container-one'>
+		 	<div class='tweets'>
+		 		<br>
+		 		<ul><h3>Tweets about {{details.firstName}}</h3>
 
 		 	
 			 		{% for tweet in results %}
 			 			<li>{{ tweet.text }}</li>
 			 		{% endfor %}
-		 	</ul>
-		 </div>
+		 		</ul>
+		 	</div>
+		</div>
 </div> <!-- End container -->
 
 	{% endautoescape %} 
@@ -56,7 +128,49 @@ padding:10px;
 
 {% endblock %}
 
+{% block script %}
+var x = 0,
+    container-one = $('.container-one'),
+    items = container-one.find('li'),
+    containerHeight = 0,
+    numberVisible = 5,
+    intervalSec = 2000;
 
+if(!container-one.find('li:first').hasClass("first")){
+  container-one.find('li:first').addClass("first");
+}
+
+items.each(function(){
+  if(x < numberVisible){
+    containerHeight = containerHeight + $(this).outerHeight();
+    x++;
+  }
+});
+
+container-one.css({ height: containerHeight, overflow: "hidden" });
+  
+function vertCycle() {
+  var firstItem = container-one.find('tweets li.first').html();
+    
+  container-one.append('<li>'+firstItem+'</li>');
+  firstItem = '';
+  container-one.find('li.first').animate({ marginTop: "-50px" }, 600, function(){  $(this).remove(); container-one.find('li:first').addClass("first"); });
+}
+
+if(intervalSec < 700){
+  intervalSec = 700;
+}
+
+var init = setInterval("vertCycle()",intervalSec);
+
+container-one.hover(function(){
+  $('.copy').first('p').show();
+  clearInterval(init);
+}, function(){
+  init = setInterval("vertCycle()",intervalSec);
+});
+
+{% endblock %}
 
 
 

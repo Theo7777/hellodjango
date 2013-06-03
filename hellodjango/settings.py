@@ -17,6 +17,7 @@ EMAIL_HOST_PASSWORD = 'fowler77'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+ALLOWED_HOSTS = ['http://lit-ridge-1114.herokuapp.com']
 
 MANAGERS = ADMINS
 
