@@ -3,7 +3,7 @@ import os.path
 
 PROJECT_PATH =  os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = True
+DEBUG = False
 DEFAULT_FROM_EMAIL = 'theo.ohene@gmail.com'
 TEMPLATE_DEBUG = DEBUG
 
@@ -177,9 +177,10 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     #'django.contrib.admindocs',
-    'writer', 
+    # 'writer', 
     #'storages',
-    'search',
+    # 'search',
+    'parallax',
 
    
 )

@@ -1,7 +1,8 @@
 from django.conf.urls import patterns, include, url
-from writer.views import EmailInput
+# from writer.views import EmailInput
 from django.conf import settings
-from search.views import search_form, search
+# from search.views import search_form, search
+from parallax.views import pageload
 
 
 # Uncomment the next two lines to enable the admin:
@@ -9,9 +10,10 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	url(r'^/', 'writer.views.EmailInput'),
-    url(r'^search-form/$', 'search.views.search_form'),
-    (r'^search/$', 'search.views.search'),
+	# url(r'^/', 'writer.views.EmailInput'),
+ #    url(r'^search-form/$', 'search.views.search_form'),
+ #    (r'^search/$', 'search.views.search'),
+    url(r'^home','parallax.views.pageload'),
 
     # Examples:
     # url(r'^$', 'hellodjango.views.home', name='home'),
