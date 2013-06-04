@@ -10,10 +10,10 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	# url(r'^/', 'writer.views.EmailInput'),
+	url(r'^writer', 'writer.views.EmailInput'),
     url(r'^search-form/$', 'search.views.search_form'),
     (r'^search/$', 'search.views.search'),
-    url(r'home','parallax.views.pageload'),
+    url(r'^home','parallax.views.pageload'),
 
     # Examples:
     # url(r'^$', 'hellodjango.views.home', name='home'),

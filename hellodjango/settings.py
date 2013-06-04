@@ -3,9 +3,9 @@ import os.path
 
 PROJECT_PATH =  os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = False
+DEBUG = True
 DEFAULT_FROM_EMAIL = 'theo.ohene@gmail.com'
-TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG = True
 
 ADMINS = (
           ('Theo', 'theo.ohene@gmail.com'),
@@ -17,7 +17,6 @@ EMAIL_HOST_PASSWORD = 'fowler77'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-ALLOWED_HOSTS = ['http://lit-ridge-1114.herokuapp.com']
 
 MANAGERS = ADMINS
 
@@ -36,7 +35,7 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
