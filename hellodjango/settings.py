@@ -85,10 +85,10 @@ if DEBUG:
     # Development storage using local files.
     STATIC_URL = '/static/'
     ADMIN_MEDIA_PREFIX = '/static/admin/'
-
-if not DEBUG:
-    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    STATIC_URL = 'http://theoohene.s3.amazonaws.com/static/'
+# 
+# if not DEBUG:
+# STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# STATIC_URL = 'http://roundworld.s3.amazonaws.com/static/'
 
 STATICFILES_DIRS = (
       #os.path.join(PROJECT_PATH, 'writer/static'),

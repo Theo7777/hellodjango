@@ -2,10 +2,10 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import json
 import requests
-import tweepy
 from bs4 import BeautifulSoup
 import lxml
 import re
+import twitter
 
 
 #Espn API Information
@@ -16,11 +16,11 @@ espn_api_key = 'grs2svvgyfbnuacue8ztu6ca'
 #Twitter API Information
 consumer_key="ttBogoGdBF14y20tmjikIQ"
 consumer_secret="RUd0kRTcOefJ2iEK5JzU0Z1s0dMLVWxtxbYz7hDGiJw"
-access_token="116472192-tGRKctDKoRpivGxmHHK5EOAWL68iT6vRZOpkBH70"
+access_token_key="116472192-tGRKctDKoRpivGxmHHK5EOAWL68iT6vRZOpkBH70"
 access_token_secret="PulgU7g4Mb4UXBYVbrHr1k1ZXey4nVX1fL8uP2wgycM"
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
-api = tweepy.API(auth)
+# auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+# auth.set_access_token(access_token, access_token_secret)
+api = twitter.Api(consumer_key, consumer_secret, access_token_key, access_token_secret)
 
 #skysports Newspaper Information
 sky_sports_url ='http://www1.skysports.com/transfer-centre/papertalk'
@@ -39,7 +39,12 @@ def search_form(request):
 
 
 def search(request):
-	if 'q' in request.GET:
+	#checking if query was made 
+	if 'q' not in request.GET:
+		error = []
+		error.append('You did not enter a query, please try again!')
+		return 	render(request, 'new-search.html', {'error':error})
+	elif 'q' in request.GET:
 		n = request.GET['q']
 		name = n.title()
 		offset = -50
@@ -58,20 +63,29 @@ def search(request):
 					profile_data = profile_response.content
 					soup = BeautifulSoup(profile_data, 'lxml')
 					profile = soup.find('ul', {'class':'profile-items'}).findAll('li')
+					#stats = soup.find('table', {'class':'feat-stats-table'}).findAll('td')
+					#stats_items = []
 					profile_items =[]
 					for items in profile:
 					 	profile_items.append(items.string)
+					#for statistics in stats:
+					#	stats_items.append(statistics.string) 
 					profile_pic = soup.find('div', {'class':'player-photo'}).find('img')
 					image = profile_pic.get('src')
 					n += 1
 					#return HttpResponse('ok')
 				else:
 					n += 1
-
 #twitter search
-		results = api.search(name)
-		return render(request, 'success1.html', {'details':details, 'results':results, 'profile':profile_items, 'image':image })
+		tweets =  api.GetSearch(details['fullName'], lang='en')
+		results = []
+		for i in tweets:
+			results.append(i.text)
 
+		return render(request, 'success1.html', {'details':details,  'profile':profile_items, 'results':results, 'image':image })
+		
+
+		# 
 					# gossip_response = requests.get(sky_sports_url)
 					# gossip_data = gossip_response.content
 					# gossip_soup = BeautifulSoup(gossip_data, 'lxml')
@@ -88,4 +102,5 @@ def search(request):
 					# 	return render(request, 'success1.html', {'details':details, 'results':results, 'profile':profile_items, 'image':image, 'no_gossip':no_gossip})
 
 # (url + '&apikey=' + api_key)
+
 

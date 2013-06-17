@@ -1,7 +1,4 @@
-# Install all of our production dependencies only.
--r requirements/prod.txt
-
-Django==1.5.1
+ngo==1.5.1
 PIL==1.1.7
 beautifulsoup4==4.2.0
 boto==2.9.2

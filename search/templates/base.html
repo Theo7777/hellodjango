@@ -2,66 +2,358 @@
 <html lang="en">
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<link rel='stylesheet' href='{{STATIC_URL}}/bootstrap/css/bootstrap-responsive.css'>
-<link rel='stylesheet' href='{{STATIC_URL}}/searchFlatui.css'>
-<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link rel='stylesheet' href='{{STATIC_URL}}bootstrap/css/bootstrap-responsive.min.css'>
+<link rel='stylesheet' href='{{STATIC_URL}}searchFlatui.css'>
+<link rel='stylesheet' href='{{STATIC_URL}}bootstrap/css/bootstrap.min.css'>
+<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+<script  src='{{STATIC_URL}}jquery.min.js'></script>
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements --><!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 <html>
     <head>
         <title>{% block head_title %}The Round World{% endblock %}</title>
-  </script>
         <style>
         body{
         font-family:'Lato', sans-serif;
         }
         .container{
-        	   font-family:'Lato', sans-serif;
 
         }
+        footer{
+            height:120px;
+             background:#34495e;
+            width: 110%;
+            margin-left: -5%;
+            margin-bottom: -2%;
+            padding-top: 3%;
+            color:#fff;
+        }
 
+        #searched-row{
+            padding: 5% 0;
+        }
+
+        #most-searched{
+        margin-left:8%;
+
+        }
+        #first{
+        margin-left:0;
+        }
+      
+
+
+      /*------------------------------
+      
+      NAVIGATION SECTION 
+
+      --------------------------------*/  
+
+
+        #branded{
+            color:#ECF0F1 !important;
+            border:none;
+            padding-right: 40px;
+            padding-top: 15px;
+        }
+
+        #search-bar{
+            border-radius: 1px;
+            color:#999999;
+            margin-top: -7px;
+        }
+        #search-button{
+            margin-right: 10px
+        }
+
+        .nav li a{
+            border: none !important;
+            padding-top: 7px !important;
+        }
+        #search-bar-details{
+        background: url("http://roundworld.s3-website-eu-west-1.amazonaws.com/small-search-icon_min.jpg") no-repeat right center;
+        height: 27px;
+        background-color: #f7f7f6;
+        font-family:'Lato', sans-serif;
+        margin-top: 3%;
+        margin-left: -15%;
+        width: 200px
+    }
+        .navbar-inverse .brand {
+            color:#ECF0F1 !important;
+
+        }
+        .navbar-inverse .navbar-text{
+            color:#ECF0F1 !important;
+            font-weight: 200;
+            cursor:pointer;
+        }
+        .navbar-inverse .navbar-text:hover{
+            color:#999999 !important
+        }
+        .navbar-inverse .navbar-inner{
+        background-color:#34495e;
+        background-image: none;
+        background-repeat: none;
+    }
+        .navbar-inverse .brand, .navbar-inverse .nav > li > a{
+            color:#ECF0F1 !important;
+            font-weight: 200
+        }
+        .navbar-inverse .brand, .navbar-inverse .nav > li > a:hover{
+          color:#999999 !important
+        }
+       
+
+    /*---------------------------------
+
+    FOOTER 
+
+    -----------------------------------*/
+
+      #footer-row{
+        }
+        #footer-nav {
+        margin-left: 20%;
+        
+        
+        }
+        footer li{
+            list-style: none;
+        }
+
+    /*----------------------------------
+
+    SOCIAL SECTION
+
+    ------------------------------------*/
+
+     .social img{
+        height:35px;
+        width:35px; 
+    }
+    .social li {
+        padding: 0px;
+    width: 50px !important; 
+    margin-left: 5px! important
+    }
+    .social ul li a{
+        cursor: pointer;
+        color:#ECF0F1;
+    }
+    .social img:hover{
+        color:#ECF0F1;
+    }
+
+    .twitter {
+        display: block;
+        background: url('{{STATIC_URL}}twitter_min.jpg') bottom no-repeat;
+        text-indent: -99999px;
+        background-position: 0 5px;
+        background-size: 35px 35px;
+        width: 50px;
+        height: 50px;
+
+    }
+    .twitter:hover{
+        background-position: 0 0;
+    }
+
+    .facebook{
+        display: block;
+        background: url('{{STATIC_URL}}facebook_min.jpg') bottom no-repeat;
+        text-indent: -99999px;
+        background-size: 35px 35px;
+        background-position: 0 5px;
+        width: 50px;
+        height: 50px;
+    }
+    .facebook:hover{
+        background-position: 0 0;
+
+
+    }
+
+    .insta{
+         display: block;
+        background: url('{{STATIC_URL}}insta_min.jpg') bottom no-repeat;
+        text-indent: -99999px;
+         background-size: 35px 35px; 
+         background-position: 0 5px;
+          width: 50px;
+        height: 50px;   
+     }
+    
+    .insta:hover{
+        background-position: 0 0;
+
+    }
+
+
+    .tumblr{
+         display: block;
+        background: url('{{STATIC_URL}}tumblr_min.jpg') bottom no-repeat;
+        text-indent: -99999px;
+         background-size: 35px 35px; 
+         background-position: 0 5px;
+          width: 50px;
+        height: 50px;   
+     }
+    
+    .tumblr:hover{
+        background-position: 0 0;
+
+    }
+
+    
         </style>
 
 
 
         <style>{% block style %}{% endblock %}</style>
         {% block head %}
+
         {% endblock %}
+
+
+
     </head>
     <body>
-       
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" id='branded' href="{% url 'search.views.search_form' %}">The Round World</a>
+                <form action="/search" method="get">
+                    <div class="nav-collapse collapse">
+                        <p class="navbar-text pull-right" id='search-bar'>
+                            <input type="text" placeholder='Search' name ='q' id='search-bar-details' /></a>
+                            <!-- <button id='search-button' type='submit'> </button> -->
+                </form>
+            </p>
+            <ul class="nav">
+              <li><a href="{% url 'search.views.search_form' %}">Home</a></li>
+              <li><a href="{% url 'search.views.search_form' %}">About</a></li>
+              <li><a href="{% url 'search.views.search_form' %}">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
         	   
                     {% block content %}
 
 
-        	           {% endblock %}
-        
-        
 
-        {% block footer %}
-        {% endblock %}
+
+        	           {% endblock %}
+<!--         
+
+<div class='row-fluid' id='searched-row'>
+        <div id='most-searched'>
+            <h3> Most Searched For Players </h3>
+
+                <h5 class='span2' id='first'> <a href='' id='link'> Robin Van Persie </a></h5>  
+                <h5 class='span2'> <a href='{% url "search.views.search" %}' id='links'>Gerrard</a></h5>  
+                <h5 class='span2'> <a href='#' id='links' >  Bale </a></h5>  
+                <h5 class='span2'> <a href='#'  id='links'> Frank Lampard </a></h5>  
+                <h5 class='span2'> <a href=''  id='links'> Sergio Augero </a></h5> 
+                <h5 class='span2'> <a hhref=''  id='links'> Michau</a></h5> 
+                <button id='new_button'> Button </button>
+        </div>
+</div>
+    
+         -->
+    <footer>
+      <div class="container-fluid">
+        <div class="row-fluid" id='footer-row'>
+          <div id='footer-nav' class='span5'>
+             <p> The Round World - The Football Index
+              <ul>
+                    <li>© 2013 Theo Ohene, Inc.</li>
+
+                </ul>
+
+              </p>  
+             <!-- <p class='span3'> <a href='#'> Frank Lampard </a></p>  
+            <p class='span3'> <a href='#'> Frank Lampard </a></p> -->  
+        
+          </div>
+
+         <div class="social" class='span5'>
+            <ul>
+                <li class='span1'>
+                    <a class="facebook" target="_blank"></a>
+                </li>
+                <li class='span1'>
+                    <a class="twitter" target="_blank"></a>
+                </li>
+                <li class='span1'>
+                    <a class="insta" target="_blank"> </a>
+                </li>
+                 <li class='span1'>
+                    <a class="tumblr" target="_blank"> </a>
+                </li>
+                
+            </ul>
+        </div>
+        </div>
+      </div>
+       {% block footer %}
+       {% endblock %}
+    </footer>
+
+       
+<script>
+
+
+
+    // $('#links').on('click', function(event){
+    //     event.preventDefault();
+    //     var link = $(this);
+    //     console.log('pressed')
+    //     $.ajax({
+    //             type:'get', 
+    //             url:'{% url "search.views.search" %}',               
+    //             data:{
+    //                 'q':link.html(),
+    //                 next: "{{request.path}}"
+    //             },
+    //             success:function(data){
+    //                 // $('html').html(data);
+    //             }
+    //      })
+    // })
+});
+
+</script>
     </body>
 
-<script  src='http://code.jquery.com/jquery-1.9.1.js'></script>
-<script  src="{{STATIC_URL}}/flatui-js/application.js"></script>
+
+
+<!-- <script  src="{{STATIC_URL}}/flatui-js/application.js"></script>
 <script  src="{{STATIC_URL}}/flatui-js/tooltip.js"></script>
 <script  src="{{STATIC_URL}}/flatui-js/custom_checkbox.js"></script>
 <script  src="{{STATIC_URL}}/flatui-js/custom_radio.js"></script>
-<script  src="{{STATIC_URL}}/bootstrap/js/bootstrap.js"></script>
-<script  src="{{STATIC_URL}}/custom.min.js"></script>
-<script  src="{{STATIC_URL}}dropkick.js"></script>
-<script  src="{{STATIC_URL}}/jquery.placeholder.js"></script>
-<script  src="{{STATIC_URL}}/tagsinput.js"></script>
-<script  src="{{STATIC_URL}}/ie.js"></script>
+<script  src="{{STATIC_URL}}/bootstrap/js/bootstrap.js"></script> -->
+<script  src="{{STATIC_URL}}custom.min.js"></script>
+<!-- <script  src="{{STATIC_URL}}dropkick.js"></script> -->
+<script  src="{{STATIC_URL}}jquery.placeholder.js"></script>
+<!-- <script  src="{{STATIC_URL}}/tagsinput.js"></script> -->
+<!-- <script  src="{{STATIC_URL}}/ie.js"></script> -->
 
-<script>
+
 {% block script %}
 
+
 {% endblock %}
-</script>
+
 
     
 </html>
