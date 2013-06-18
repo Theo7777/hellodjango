@@ -86,7 +86,7 @@ USE_TZ = True
 
 
 AWS_STORAGE_BUCKET_NAME='roundworld'
-#AWS_PRELOAD_METADATA = True # necessary to fix manage.py collectstatic command to only upload changed files instead of all files
+AWS_PRELOAD_METADATA = True # necessary to fix manage.py collectstatic command to only upload changed files instead of all files
 AWS_ACCESS_KEY_ID = 'AKIAJ4DUFG5UHHDENCFA'
 AWS_SECRET_ACCESS_KEY='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'
 
