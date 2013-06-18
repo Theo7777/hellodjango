@@ -95,14 +95,15 @@ AWS_SECRET_ACCESS_KEY = '4A4JaeQ4mopOG8nruPzbxEgiBYUaZmo8m2F0VnaM'
 # ...
 
 
- if DEBUG:
+if DEBUG:
     #Development storage using local files.
     STATIC_URL = '/static/'
     ADMIN_MEDIA_PREFIX = '/static/admin/'
-
-if not DEBUG:
+else:
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     STATIC_URL = 'http://roundworld.s3.amazonaws.com/static/'
+
+
 
 STATICFILES_DIRS = (
       #os.path.join(PROJECT_PATH, 'writer/static'),

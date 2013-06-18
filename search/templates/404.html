@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Page not found</h1>
+
+    <p>Sorry, we couldn't find the page you were looking for</p>
+
+    <p>Please search again:</p>
+
+     <form action="/search/" method="get">
+            		        <input type="text" name="q" id='search-box'>
+                         <label class="search-icon" for="search-box"></label>
+                         <button type="submit" type='button' id ='button' class="btn btn-large" data-loading-text="Loading..." style='font-family:"Lato", sans-serif !important; color:#34495E'>Search Footballers</button>
+
+            		    </form>
+
+{% endblock %}
