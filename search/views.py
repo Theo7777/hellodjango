@@ -13,14 +13,14 @@ url ='http://api.espn.com/v1/sports/soccer/eng.1/athletes?offset='
 
 espn_api_key = 'grs2svvgyfbnuacue8ztu6ca'
 
-#Twitter API Information
-consumer_key="ttBogoGdBF14y20tmjikIQ"
-consumer_secret="RUd0kRTcOefJ2iEK5JzU0Z1s0dMLVWxtxbYz7hDGiJw"
-access_token_key="116472192-tGRKctDKoRpivGxmHHK5EOAWL68iT6vRZOpkBH70"
-access_token_secret="PulgU7g4Mb4UXBYVbrHr1k1ZXey4nVX1fL8uP2wgycM"
-# auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-# auth.set_access_token(access_token, access_token_secret)
-api = twitter.Api(consumer_key, consumer_secret, access_token_key, access_token_secret)
+# #Twitter API Information
+# consumer_key="ttBogoGdBF14y20tmjikIQ"
+# consumer_secret="RUd0kRTcOefJ2iEK5JzU0Z1s0dMLVWxtxbYz7hDGiJw"
+# access_token_key="116472192-tGRKctDKoRpivGxmHHK5EOAWL68iT6vRZOpkBH70"
+# access_token_secret="PulgU7g4Mb4UXBYVbrHr1k1ZXey4nVX1fL8uP2wgycM"
+# # auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+# # auth.set_access_token(access_token, access_token_secret)
+# api = twitter.Api(consumer_key, consumer_secret, access_token_key, access_token_secret)
 
 #skysports Newspaper Information
 sky_sports_url ='http://www1.skysports.com/transfer-centre/papertalk'
