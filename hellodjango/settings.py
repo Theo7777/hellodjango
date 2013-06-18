@@ -3,7 +3,7 @@ import os.path
 
 PROJECT_PATH =  os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = True
+DEBUG = False
 DEFAULT_FROM_EMAIL = 'theo.ohene@gmail.com'
 TEMPLATE_DEBUG = True
 
