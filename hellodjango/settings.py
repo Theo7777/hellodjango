@@ -99,9 +99,11 @@ if DEBUG:
     #Development storage using local files.
     STATIC_URL = '/static/'
     ADMIN_MEDIA_PREFIX = '/static/admin/'
+    STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 else:
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     STATIC_URL = 'http://roundworld.s3.amazonaws.com/static/'
+    # STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 
 
 
@@ -112,7 +114,7 @@ STATICFILES_DIRS = (
 
 #ADMIN_MEDIA_PREFIX = 'https://theoohene.s3.amazonaws.com/static/admin/'
 
-STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
+
 
 
 
