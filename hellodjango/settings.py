@@ -3,6 +3,8 @@ import os.path
 import socket
 
 PROJECT_PATH =  os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.dirname(__file__) # this is not Django setting.
+# os.path.abspath(os.path.join(os.path.dirname( __file__ ))
 
 import socket
 
@@ -83,7 +85,7 @@ USE_TZ = True
 # Example: "/var/www/example.com/static/"
 
 
-AWS_STORAGE_BUCKET_NAME = 'theoohene'
+WS_STORAGE_BUCKET_NAME = 'roundworld'
 #AWS_PRELOAD_METADATA = True # necessary to fix manage.py collectstatic command to only upload changed files instead of all files
 AWS_ACCESS_KEY_ID = 'AKIAJ4DUFG5UHHDENCFA'
 AWS_SECRET_ACCESS_KEY = '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'
@@ -101,15 +103,19 @@ if DEBUG:
     ADMIN_MEDIA_PREFIX = '/static/admin/'
     STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 else:
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     STATIC_URL = 'http://roundworld.s3.amazonaws.com/static/'
+    MEDIA_URL = 'http://roundworld.s3.amazonaws.com/static/'
+    ADMIN_MEDIA_PREFIX = 'http://roundworld.s3.amazonaws.com/static/admin'
+
     # STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 
 
 
 STATICFILES_DIRS = (
       #os.path.join(PROJECT_PATH, 'writer/static'),
-      os.path.join(PROJECT_PATH, 'search/static'),
+      os.path.join(PROJECT_DIR, 'search/static'),
 )
 
 #ADMIN_MEDIA_PREFIX = 'https://theoohene.s3.amazonaws.com/static/admin/'
@@ -170,8 +176,9 @@ ROOT_URLCONF = 'hellodjango.urls'
 WSGI_APPLICATION = 'hellodjango.wsgi.application'
 
 
-PROJECT_DIR = os.path.dirname(__file__) # this is not Django setting.
+
 TEMPLATE_DIRS = (
+
                  os.path.join(PROJECT_DIR, "templates"),
                  # here you can add another templates directory if you wish.
                  )
@@ -195,7 +202,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     #'django.contrib.admindocs',
     'writer', 
-    #'storages',
+    'storages',
     'search',
     'parallax',
 
