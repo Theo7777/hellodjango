@@ -1,9 +1,17 @@
 # Django settings for myproject project.
 import os.path
+import socket
 
 PROJECT_PATH =  os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = False
+import socket
+
+if socket.gethostname() == 'Theos-MacBook-Pro.local':
+    DEBUG = TEMPLATE_DEBUG = True
+else:
+    DEBUG = TEMPLATE_DEBUG = False
+
+
 DEFAULT_FROM_EMAIL = 'theo.ohene@gmail.com'
 TEMPLATE_DEBUG = True
 
@@ -80,15 +88,21 @@ AWS_STORAGE_BUCKET_NAME = 'theoohene'
 AWS_ACCESS_KEY_ID = 'AKIAJ4DUFG5UHHDENCFA'
 AWS_SECRET_ACCESS_KEY = '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'
 
+# settings.py
 
-# if DEBUG:
-#     # Development storage using local files.
-#     STATIC_URL = '/static/'
-#     ADMIN_MEDIA_PREFIX = '/static/admin/'
-# # 
-# # if not DEBUG:
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-STATIC_URL = 'http://roundworld.s3.amazonaws.com/static/'
+
+
+# ...
+
+
+ if DEBUG:
+    #Development storage using local files.
+    STATIC_URL = '/static/'
+    ADMIN_MEDIA_PREFIX = '/static/admin/'
+
+if not DEBUG:
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    STATIC_URL = 'http://roundworld.s3.amazonaws.com/static/'
 
 STATICFILES_DIRS = (
       #os.path.join(PROJECT_PATH, 'writer/static'),
