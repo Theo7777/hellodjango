@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 import lxml
 import re
-# import twitter
+from twitter import *
 
 
 #Espn API Information
@@ -14,13 +14,12 @@ url ='http://api.espn.com/v1/sports/soccer/eng.1/athletes?offset='
 espn_api_key = 'grs2svvgyfbnuacue8ztu6ca'
 
 # #Twitter API Information
-# consumer_key="ttBogoGdBF14y20tmjikIQ"
-# consumer_secret="RUd0kRTcOefJ2iEK5JzU0Z1s0dMLVWxtxbYz7hDGiJw"
-# access_token_key="116472192-tGRKctDKoRpivGxmHHK5EOAWL68iT6vRZOpkBH70"
-# access_token_secret="PulgU7g4Mb4UXBYVbrHr1k1ZXey4nVX1fL8uP2wgycM"
-# # auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-# # auth.set_access_token(access_token, access_token_secret)
-# api = twitter.Api(consumer_key, consumer_secret, access_token_key, access_token_secret)
+CONSUMER_KEY="ttBogoGdBF14y20tmjikIQ"
+CONSUMER_SECRET="RUd0kRTcOefJ2iEK5JzU0Z1s0dMLVWxtxbYz7hDGiJw"
+OUTH_TOKEN="116472192-tGRKctDKoRpivGxmHHK5EOAWL68iT6vRZOpkBH70"
+OAUTH_SECRET="PulgU7g4Mb4UXBYVbrHr1k1ZXey4nVX1fL8uP2wgycM"
+
+t = Twitter(auth = OAuth(OUTH_TOKEN, OAUTH_SECRET, CONSUMER_KEY, CONSUMER_SECRET))
 
 #skysports Newspaper Information
 sky_sports_url ='http://www1.skysports.com/transfer-centre/papertalk'
@@ -76,17 +75,13 @@ def search(request):
 					#return HttpResponse('ok')
 				else:
 					n += 1
-#twitter search
-		# tweets =  api.GetSearch(details['fullName'], lang='en')
-		# results = []
-		# for i in tweets:
-		# 	results.append(i.text)
+		#twitter search
+		tweets = t.search.tweets(q=details['fullName'], lang='en')
+		results = []
+		for i in tweets['statuses']:
+			results.append(i['text'])			
 
-		return render(request, 'success1.html', {'details':details,  'profile':profile_items, 'image':image })
-		# 'results':results,
-		
-
-		# 
+		return render(request, 'success1.html', {'details':details,  'profile':profile_items, 'results':results,'image':image })
 					# gossip_response = requests.get(sky_sports_url)
 					# gossip_data = gossip_response.content
 					# gossip_soup = BeautifulSoup(gossip_data, 'lxml')
