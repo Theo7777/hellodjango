@@ -85,10 +85,10 @@ USE_TZ = True
 # Example: "/var/www/example.com/static/"
 
 
-WS_STORAGE_BUCKET_NAME = 'roundworld'
+AWS_STORAGE_BUCKET_NAME='roundworld'
 #AWS_PRELOAD_METADATA = True # necessary to fix manage.py collectstatic command to only upload changed files instead of all files
 AWS_ACCESS_KEY_ID = 'AKIAJ4DUFG5UHHDENCFA'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_SECRET_ACCESS_KEY='4A4JaeQ4mopOG8nruPzbxEgiBYUaZmo8m2F0VnaM'
 
 # settings.py
 
@@ -97,17 +97,17 @@ AWS_SECRET_ACCESS_KEY = '4A4JaeQ4mopOG8nruPzbxEgiBYUaZmo8m2F0VnaM'
 # ...
 
 
-# if DEBUG:
-#     #Development storage using local files.
-#     STATIC_URL = '/static/'
-#     ADMIN_MEDIA_PREFIX = '/static/admin/'
-#     STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
-# else:
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-STATIC_URL = 'http://roundworld.s3.amazonaws.com/static/'
-MEDIA_URL = 'http://roundworld.s3.amazonaws.com/static/'
-ADMIN_MEDIA_PREFIX = 'http://roundworld.s3.amazonaws.com/static/admin'
+if DEBUG:
+    #Development storage using local files.
+    STATIC_URL = '/static/'
+    ADMIN_MEDIA_PREFIX = '/static/admin/'
+    STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
+else:
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    STATIC_URL = 'http://roundworld.s3.amazonaws.com/static/'
+    MEDIA_URL = 'http://roundworld.s3.amazonaws.com/static/'
+    ADMIN_MEDIA_PREFIX = 'http://roundworld.s3.amazonaws.com/static/admin'
 
     # STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 
@@ -149,7 +149,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'a-gtlqs9th*a(4o^chh$h(c6ttc3i22r7(xa77+@t@+!3a^+ct'
+SECRET_KEY='a-gtlqs9th*a(4o^chh$h(c6ttc3i22r7(xa77+@t@+!3a^+ct'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -202,7 +202,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     #'django.contrib.admindocs',
     'writer', 
-    # 'storages',
+    'storages',
     'search',
     'parallax',
 

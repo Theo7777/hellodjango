@@ -36,7 +36,7 @@
       <!-- 			<h3 id='search-heading'> Search Footballers </h3> -->
       				<h4> Start Typing... </h4>
                   <div class='span10' id='search-main'>
-            		  <form action="/search/" method="get">
+            		  <form action="{% url 'search.views.search_form' %}" method="get">
             		        <input type="text" name="q" id='search-box' placeholder='e.g. Gerrard, Rooney'>
                          <label class="search-icon" for="search-box"></label>
                          <button type="submit" type='button' id ='button' class="btn btn-large" data-loading-text="Loading..." style='font-family:"Lato", sans-serif !important; color:#34495E'>Search Footballers</button>
