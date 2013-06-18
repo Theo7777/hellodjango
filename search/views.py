@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 import lxml
 import re
-import twitter
+# import twitter
 
 
 #Espn API Information
@@ -77,12 +77,13 @@ def search(request):
 				else:
 					n += 1
 #twitter search
-		tweets =  api.GetSearch(details['fullName'], lang='en')
-		results = []
-		for i in tweets:
-			results.append(i.text)
+		# tweets =  api.GetSearch(details['fullName'], lang='en')
+		# results = []
+		# for i in tweets:
+		# 	results.append(i.text)
 
-		return render(request, 'success1.html', {'details':details,  'profile':profile_items, 'results':results, 'image':image })
+		return render(request, 'success1.html', {'details':details,  'profile':profile_items, 'image':image })
+		# 'results':results,
 		
 
 		# 
