@@ -10,8 +10,8 @@ from twitter import *
 
 #Espn API Information
 url ='http://api.espn.com/v1/sports/soccer/eng.1/athletes?offset='
-
 espn_api_key = 'grs2svvgyfbnuacue8ztu6ca'
+# (url + '&apikey=' + api_key)
 
 # #Twitter API Information
 CONSUMER_KEY="ttBogoGdBF14y20tmjikIQ"
@@ -50,31 +50,37 @@ def search(request):
 		for num in range(13):
 			offset += 50
 			response = requests.get(url + str(offset) + '&apikey=' + espn_api_key)
-			data = json.loads(response.content)
-			players = data["sports"][0]["leagues"][0]["athletes"]
-			n = -1
-			for names in players:
-				player_name = players[n]['fullName']
-				if name in player_name:
-					details = players[n]					
-					link = details['links']['web']['athletes']['href']
-					profile_response = requests.get(link)
-					profile_data = profile_response.content
-					soup = BeautifulSoup(profile_data, 'lxml')
-					profile = soup.find('ul', {'class':'profile-items'}).findAll('li')
-					#stats = soup.find('table', {'class':'feat-stats-table'}).findAll('td')
-					#stats_items = []
-					profile_items =[]
-					for items in profile:
-					 	profile_items.append(items.string)
-					#for statistics in stats:
-					#	stats_items.append(statistics.string) 
-					profile_pic = soup.find('div', {'class':'player-photo'}).find('img')
-					image = profile_pic.get('src')
-					n += 1
-					#return HttpResponse('ok')
-				else:
-					n += 1
+			try:
+				data = json.loads(response.content)
+				details = data
+				# players = data["sports"][0]["leagues"][0]["athletes"]
+				# n = -1
+				# for names in players:
+				# 	player_name = players[n]['fullName']
+				# 	if name in player_name:
+				# 		details = players[n]					
+				# 		link = details['links']['web']['athletes']['href']
+				# 		profile_response = requests.get(link)
+				# 		profile_data = profile_response.content
+				# 		soup = BeautifulSoup(profile_data, 'lxml')
+				# 		profile = soup.find('ul', {'class':'profile-items'}).findAll('li')
+				# 		#stats = soup.find('table', {'class':'feat-stats-table'}).findAll('td')
+				# 		#stats_items = []
+				# 		profile_items =[]
+				# 		for items in profile:
+				# 		 	profile_items.append(items.string)
+				# 		#for statistics in stats:
+				# 		#	stats_items.append(statistics.string) 
+				# 		profile_pic = soup.find('div', {'class':'player-photo'}).find('img')
+				# 		image = profile_pic.get('src')
+				# 		n += 1
+				# 		#return HttpResponse('ok')
+				# 	else:
+				# 		n += 1
+			except:
+				HttpResponse('nothing brought back')
+
+
 		#twitter search
 		tweets = t.search.tweets(q=details['fullName'], lang='en')
 		results = []

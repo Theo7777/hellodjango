@@ -108,16 +108,16 @@ AWS_SECRET_ACCESS_KEY='4A4JaeQ4mopOG8nruPzbxEgiBYUaZmo8m2F0VnaM'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 STATIC_URL = 'http://roundworld.s3.amazonaws.com/static/'
-MEDIA_URL = 'http://roundworld.s3.amazonaws.com/static/'
+MEDIA_URL = 'http://roundworld.s3.amazonaws.com/static/media/'
 ADMIN_MEDIA_PREFIX = 'http://roundworld.s3.amazonaws.com/static/admin'
 
-    # STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
+STATIC_ROOT = '/Users/Theo/static'
 
 
 
 STATICFILES_DIRS = (
       #os.path.join(PROJECT_PATH, 'writer/static'),
-      os.path.join(PROJECT_DIR, 'search/static'),
+      os.path.join(PROJECT_DIR, 'static')
 )
 
 #ADMIN_MEDIA_PREFIX = 'https://theoohene.s3.amazonaws.com/static/admin/'
