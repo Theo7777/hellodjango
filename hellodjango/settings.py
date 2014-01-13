@@ -25,7 +25,7 @@ ADMINS = (
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'theo.ohene@gmail.com'
-EMAIL_HOST_PASSWORD = 'fowler77'
+EMAIL_HOST_PASSWORD = '****'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
@@ -89,8 +89,8 @@ USE_TZ = True
 
 AWS_STORAGE_BUCKET_NAME='roundworld'
 AWS_PRELOAD_METADATA = True # necessary to fix manage.py collectstatic command to only upload changed files instead of all files
-AWS_ACCESS_KEY_ID = 'AKIAJ4DUFG5UHHDENCFA'
-AWS_SECRET_ACCESS_KEY='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'
+AWS_ACCESS_KEY_ID = '***'
+AWS_SECRET_ACCESS_KEY='***'
 
 # settings.py
 
@@ -151,7 +151,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY='a-gtlqs9th*a(4o^chh$h(c6ttc3i22r7(xa77+@t@+!3a^+ct'
+SECRET_KEY='***
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
