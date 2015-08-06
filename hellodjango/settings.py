@@ -16,15 +16,15 @@ import socket
 DEBUG = TEMPLATE_DEBUG = True
 
 
-DEFAULT_FROM_EMAIL = 'theo.ohene@gmail.com'
+DEFAULT_FROM_EMAIL = ''
 TEMPLATE_DEBUG = True
 
 ADMINS = (
-          ('Theo', 'theo.ohene@gmail.com'),
+          ('Theo', ''),
           )
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'theo.ohene@gmail.com'
+EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = '****'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
